@@ -89,10 +89,4 @@ formElement.addEventListener('submit',function(e){
     resultMessageElement.innerText = (isPalindrome(inputWord))
 })
 
-// Create result button event
-nextWordBtn.addEventListener('click', function(){
-    formElement.classList.toggle('d-none') // Hidden the form
-    resultFormElement.classList.toggle('d-none')// Show the result
-})
-
 
