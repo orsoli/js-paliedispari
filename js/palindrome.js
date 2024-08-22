@@ -17,48 +17,70 @@
 
 // Version-1
 
-// // --- Preparation Phase
-// // Create variable to save the input word
-// const inputWord = prompt('Insert a word', 'orsro').trim()
-
-// // Create a function to check input word
-// function isPalindrome(inputWord){
-//     // Create a variable to save the reverse word
-//     let reverseWord = "";
-//     // Create a loop to reverse the input word
-//     for(let i = inputWord.length - 1; i >= 0; i--){
-//         // Add letters in reverseWord
-//         reverseWord += inputWord.charAt(i)
-//     }
-//     // Create condition for the result
-//     const result = inputWord === reverseWord ? console.log(`${inputWord} is a Palindrome word`) : console.log(`${inputWord} is not a Palindrome word`)
-//     // Print in console the result
-//     return result;
-// }
-
-// //--- Proccesing phase
-// // Call back function
-// isPalindrome(inputWord)
-
-
-
-// Version-2
-
 // --- Preparation Phase
 // Create variable to save the input word
 const inputWord = prompt('Insert a word', 'orsro').trim()
 
+/**
+ * 
+ * @param {string} inputWord // User input word
+ * @returns {string}  // Rteurn the result
+ */
 // Create a function to check input word
 function isPalindrome(inputWord){
+    //! Validation
+    // If the user insert empty input
+    if(!inputWord){
+        let erroMsg = 'Insert min one word';
+        return erroMsg
+    }
     // Create a variable to save the reverse word
-    const reverseWord = inputWord.split('').reverse().join('')
+    let reverseWord = "";
+    // Create a loop to reverse the input word
+    for(let i = inputWord.length - 1; i >= 0; i--){
+        // Add letters in reverseWord
+        reverseWord += inputWord.charAt(i)
+    }
     // Create condition for the result
-    const result = inputWord === reverseWord ? console.log(`${inputWord} is a Palindrome word`) : console.log(`${inputWord} is not a Palindrome word`)
+    const result = inputWord === reverseWord ? `${inputWord} is a Palindrome word` : `${inputWord} is not a Palindrome word`
     // Print in console the result
     return result;
 }
 
+
+
+// // Version-2
+
+// // --- Preparation Phase
+// // Create variable to save the input word
+// const inputWord = prompt('Insert a word', 'orsro').trim()
+
+
+// /**
+//  * 
+//  * @param {string} inputWord // User input word
+//  * @returns {string}  // Rteurn the result
+//  */
+// // Create a function to check input word
+// function isPalindrome(inputWord){
+//     //! Validation
+//     // If the user insert empty input
+//     if(!inputWord){
+//         let erroMsg = 'Insert min one word';
+//         return erroMsg
+//     }
+
+//     // Create a variable to save the reverse word
+//     const reverseWord = inputWord.split('').reverse().join('')
+//     // Create condition for the result
+//     const result = inputWord === reverseWord ? `${inputWord} is a Palindrome word` : `${inputWord} is not a Palindrome word`
+//     // Print in console the result
+//     return result;
+// }
+
+
+
 //--- Proccesing phase
 // Call back function
-isPalindrome(inputWord)
+console.log(isPalindrome(inputWord))
 
