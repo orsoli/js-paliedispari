@@ -39,23 +39,25 @@ const message = 'The winner is:'
 function generatePcNumber(){
     // Generate a nr from min to max
     const pcNumber = Math.floor(Math.random()*(max - min + 1)) + min
-    console.log(pcNumber) // Print in consol pcnumber
+    console.log(`Pc nr is:${pcNumber}`) // Print in consol pcnumber
 
     return pcNumber // Return pcNumber
 }
 
 // Save the sum of tow numbers
 const sum = userNumber + generatePcNumber();
+console.log(sum) // Print in console the sum 
 
 // Create check even or odd function
 function isEvvenOdd (sum){
     let result = sum % 2 === 0 ? 'even' : 'odd' // Chek if is even or odd
+    console.log(result)
 
   return result // Return the result
 }
 
 // --- Proccesing phase
 // Compare the reult with userWord to declear the winer
-const winner = userWord === isEvvenOdd ? `${message}User` : `${message}PC`
+const winner = userWord === isEvvenOdd(sum) ? `${message}User` : `${message}PC`
 
 console.log(winner)
