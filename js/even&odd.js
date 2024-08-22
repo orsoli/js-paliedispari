@@ -31,33 +31,45 @@ const min = 1; // Min nr to generate
 const max = 5; // Max nr to generate
 const message = 'The winner is:'
 
-/**
- * 
- * @returns {number}
- */
-// Create generate ps number functions
-function generatePcNumber(){
-    // Generate a nr from min to max
-    const pcNumber = Math.floor(Math.random()*(max - min + 1)) + min
-    console.log(`Pc nr is:${pcNumber}`) // Print in consol pcnumber
+//! Validation
+switch (true) {
+    case !userWord: // Check if userWord is empty
+        case !isNaN(userWord): // Check if userWord is a number
+        case isNaN(userNumber): // Check if userNumber is not a number
+        case !userNumber: // Check if userNumber is empty
+        case isNaN(userNumber < 1): // Check if userNumber is less than 1
+        console.log('!ERROR: Your inputs are iicorrect')
+        break
 
-    return pcNumber // Return pcNumber
-}
-
-// Save the sum of tow numbers
-const sum = userNumber + generatePcNumber();
-console.log(sum) // Print in console the sum 
-
-// Create check even or odd function
-function isEvvenOdd (sum){
-    let result = sum % 2 === 0 ? 'even' : 'odd' // Chek if is even or odd
-    console.log(result)
-
-  return result // Return the result
-}
-
-// --- Proccesing phase
-// Compare the reult with userWord to declear the winer
-const winner = userWord === isEvvenOdd(sum) ? `${message}User` : `${message}PC`
-
-console.log(winner)
+    default:        
+        /**
+         * 
+         * @returns {number}
+        */
+       // Create generate ps number functions
+       function generatePcNumber(){
+           // Generate a nr from min to max
+           const pcNumber = Math.floor(Math.random()*(max - min + 1)) + min
+           console.log(`Pc nr is:${pcNumber}`) // Print in consol pcnumber
+           
+           return pcNumber // Return pcNumber
+        }
+        
+        // Save the sum of tow numbers
+        const sum = userNumber + generatePcNumber();
+        console.log('The sum is:',sum) // Print in console the sum 
+        
+        // Create check even or odd function
+        function isEvvenOdd (sum){
+            let result = sum % 2 === 0 ? 'even' : 'odd' // Chek if is even or odd
+            console.log(result)
+            
+            return result // Return the result
+        }
+        
+        // --- Proccesing phase
+        // Compare the reult with userWord to declear the winer
+        const winner = userWord === isEvvenOdd(sum) ? `${message}User` : `${message}PC`
+        
+        console.log(winner)
+    }   
