@@ -29,6 +29,7 @@ const userWord = prompt('Choose even or odd', 'even').trim() // Get word user in
 const userNumber = parseInt(prompt('Choose a nr from 1-5', 4).trim()) // Get number input
 const min = 1; // Min nr to generate
 const max = 5; // Max nr to generate
+const message = 'The winner is:'
 
 /**
  * 
@@ -38,6 +39,7 @@ const max = 5; // Max nr to generate
 function generatePcNumber(){
     // Generate a nr from min to max
     const pcNumber = Math.floor(Math.random()*(max - min + 1)) + min
+    console.log(pcNumber) // Print in consol pcnumber
 
     return pcNumber // Return pcNumber
 }
@@ -51,3 +53,9 @@ function isEvvenOdd (sum){
 
   return result // Return the result
 }
+
+// --- Proccesing phase
+// Compare the reult with userWord to declear the winer
+const winner = userWord === isEvvenOdd ? `${message}User` : `${message}PC`
+
+console.log(winner)
