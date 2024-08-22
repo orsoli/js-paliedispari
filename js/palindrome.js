@@ -15,46 +15,11 @@
     3. Call the function
 */
 
-// Version-1
-
-// --- Preparation Phase
-// Create variable to save the input word
-const inputWord = prompt('Insert a word', 'orsro').trim()
-
-/**
- * 
- * @param {string} inputWord // User input word
- * @returns {string}  // Rteurn the result
- */
-// Create a function to check input word
-function isPalindrome(inputWord){
-    //! Validation
-    // If the user insert empty input
-    if(!inputWord){
-        let erroMsg = 'Insert min one word';
-        return erroMsg
-    }
-    // Create a variable to save the reverse word
-    let reverseWord = "";
-    // Create a loop to reverse the input word
-    for(let i = inputWord.length - 1; i >= 0; i--){
-        // Add letters in reverseWord
-        reverseWord += inputWord.charAt(i)
-    }
-    // Create condition for the result
-    const result = inputWord === reverseWord ? `${inputWord} is a Palindrome word` : `${inputWord} is not a Palindrome word`
-    // Print in console the result
-    return result;
-}
-
-
-
-// // Version-2
+// // Version-1
 
 // // --- Preparation Phase
 // // Create variable to save the input word
 // const inputWord = prompt('Insert a word', 'orsro').trim()
-
 
 // /**
 //  * 
@@ -69,9 +34,13 @@ function isPalindrome(inputWord){
 //         let erroMsg = 'Insert min one word';
 //         return erroMsg
 //     }
-
 //     // Create a variable to save the reverse word
-//     const reverseWord = inputWord.split('').reverse().join('')
+//     let reverseWord = "";
+//     // Create a loop to reverse the input word
+//     for(let i = inputWord.length - 1; i >= 0; i--){
+//         // Add letters in reverseWord
+//         reverseWord += inputWord.charAt(i)
+//     }
 //     // Create condition for the result
 //     const result = inputWord === reverseWord ? `${inputWord} is a Palindrome word` : `${inputWord} is not a Palindrome word`
 //     // Print in console the result
@@ -80,7 +49,50 @@ function isPalindrome(inputWord){
 
 
 
+// Version-2
+
+// --- Preparation Phase
+// Create variable to save the input word
+const formElement = document.getElementById('palindrome-form')
+const inputWordElement = document.getElementById('input-word')
+const palindromeBtnElement = document.getElementById('palindrome-btn')
+const resultFormElement = document.getElementById('result-form')
+const resultMessageElement = document.getElementById('result-message')
+const nextWordBtn = document.getElementById('next-word-btn')
+
+
+/**
+ * 
+ * @param {string} inputWord // User input word
+ * @returns {string}  // Rteurn the result
+ */
+// Create a function to check input word
+function isPalindrome(inputWord){
+    // Create a variable to save the reverse word
+    const reverseWord = inputWord.split('').reverse().join('')
+    // Create condition for the result
+    const result = inputWord === reverseWord ? `${inputWord} is a Palindrome word` : `${inputWord} is not a Palindrome word`
+    // Print in console the result
+    return result;
+}
+
+
+
 //--- Proccesing phase
-// Call back function
-console.log(isPalindrome(inputWord))
+// Create event form
+formElement.addEventListener('submit',function(e){
+    e.preventDefault(); // Prevent the default form submission action
+    const inputWord = inputWordElement.value.trim() // Save the user word
+    formElement.classList.toggle('d-none') // Hidden the form
+    resultFormElement.classList.toggle('d-none')// Show the result
+    // Call back function
+    resultMessageElement.innerText = (isPalindrome(inputWord))
+})
+
+// Create result button event
+nextWordBtn.addEventListener('click', function(){
+    formElement.classList.toggle('d-none') // Hidden the form
+    resultFormElement.classList.toggle('d-none')// Show the result
+})
+
 
