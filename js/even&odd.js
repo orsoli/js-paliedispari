@@ -25,7 +25,7 @@
 
 //--- Preparation phase
 // Create variables
-const userWord = prompt('Choose even or odd', 'even').trim() // Get word user input
+const userWord = prompt('Choose even or odd', 'even').trim().toLocaleLowerCase() // Get word user input trim end lower case
 const userNumber = parseInt(prompt('Choose a nr from 1-5', 4).trim()) // Get number input
 const min = 1; // Min nr to generate
 const max = 5; // Max nr to generate
@@ -33,13 +33,12 @@ const message = 'The winner is:'
 
 //! Validation
 switch (true) {
-    case !userWord: // Check if userWord is empty
-        case !isNaN(userWord): // Check if userWord is a number
-        case isNaN(userNumber): // Check if userNumber is not a number
-        case !userNumber: // Check if userNumber is empty
-        case isNaN(userNumber < 1): // Check if userNumber is less than 1
-        console.log('!ERROR: Your inputs are iicorrect')
-        break
+    case userWord !== 'even' && userWord !== 'odd': // Check if userWord is not 'even' or 'odd'
+    case isNaN(userNumber): // Check if userNumber is not a number
+    case !userNumber: // Check if userNumber is empty
+    case isNaN(userNumber < 1): // Check if userNumber is less than 1
+    console.log('!ERROR: Your inputs are incorrect')
+    break
 
     default:        
         /**
