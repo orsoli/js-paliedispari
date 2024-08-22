@@ -79,7 +79,7 @@ function isPalindrome(inputWord){
 
 
 //--- Proccesing phase
-// Create event form
+// Add event listener on form element
 formElement.addEventListener('submit',function(e){
     e.preventDefault(); // Prevent the default form submission action
     const inputWord = inputWordElement.value.trim() // Save the user word

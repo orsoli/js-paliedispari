@@ -22,7 +22,7 @@
 
     <!-- Scripts  -->
     <script defer src="./js/palindrome.js"></script>
-    <!-- <script defer src="./js/even&odd.js"></script> -->
+    <script defer src="./js/even&odd.js"></script>
 </head>
 <body>
     <!-- Palindrome game  -->
@@ -39,9 +39,60 @@
         </form>
         <!-- Result section  -->
         <div class="d-none" id="result-form">
-            <p class="fs-3 text-light bg-success" id="result-message">yotuuen</p>
+            <p class="fs-3 text-light bg-success" id="result-message"></p>
             <button class="btn btn-primary mb-3" id="next-word-btn">Next Word</button>
         </div>
      </section>
+
+     <!-- HR  -->
+     <div class="border"></div>
+
+    <!-- Even or Odd program  -->
+    <section class="text-center w-50 mx-auto my-5 border rounded-4 shadow bg-success bg-opacity-25">
+        <h1 class="my-4">Even Or Odd program</h1>
+        <!-- Inputs form  -->
+        <form class="row flex-column mx-auto g-4" id="evenOdd-form">
+            <div class="col-6 mx-auto">
+              <select class="form-control" name="even-odd" id="evenOdd-select" required>
+                <option value="even/odd">Choose even or odd</option>
+                <option value="even">even</option>
+                <option value="odd">odd</option>
+              </select>
+            </div>
+            <div class="col-6 mx-auto">
+              <label for="user-number">Insert a number 1-5</label>
+              <input type="number" class="form-control w-50 mx-auto" id="user-number" placeholder="Number" required>
+            </div>
+            <div class="col-auto mb-4">
+              <button type="submit" class="btn btn-primary mb-3" id="palindrome-btn">Play</button>
+            </div>
+        </form>
+        <!-- Result section  -->
+        <div class="d-none" id="evenOdd-result-form">
+            <div class="row">
+                <div class="col player">
+                    <span class="fs-1">PLAYER</span> <br>
+                    <span class="fs-5" id="result-user-selected">Choose:</span> <br>
+                    <span class="fs-5" id="result-user-number">Insert nr:</span>
+                </div>
+                <div class="col player">
+                    <span class="fs-3">Sum</span> <br>
+                    <span class="fs-5" id="result-sum"></span> <br>
+                    <span class="fs-5" id="result-sum-evenOdd">The sum is: </span>
+                </div>
+                <div class="col player">
+                    <span class="fs-1">CPU</span> <br>
+                    <span class="fs-5" id="result-pc-selected">Choose:</span> <br>
+                    <span class="fs-5" id="result-pc-number">Insert nr: </span>
+                </div>
+            </div>
+            <form >
+                <p class="fs-3 text-light bg-success" id="evenOdd-message"></p>
+                <button type="submit" class="btn btn-primary mb-3" id="play-again-btn">Play Again</button>
+
+            </form>
+        </div>
+    </section>
+
 </body>
 </html>

@@ -24,51 +24,64 @@
 */
 
 //--- Preparation phase
-// Create variables
-const userWord = prompt('Choose even or odd', 'even').trim().toLocaleLowerCase() // Get word user input trim end lower case
-const userNumber = parseInt(prompt('Choose a nr from 1-5', 4).trim()) // Get number input
+// Retrieve interested elements in DOM
+const evenOddFormElement = document.getElementById('evenOdd-form')
+const userWordElement = document.getElementById('evenOdd-select')
+const userNumberElement = document.getElementById('user-number') 
+const evenOddResultFormElement = document.getElementById('evenOdd-result-form')
+const messageElement = document.getElementById('evenOdd-message')
+const playAgainBtnElement = document.getElementById('play-again-btn')
+const resultUserNumberElement = document.getElementById('result-user-number')
+const resultUserSelectedElement = document.getElementById('result-user-selected')
+const resultPcNumberElement = document.getElementById('result-pc-number')
+const resultPcSelectedElement = document.getElementById('result-pc-selected')
+const resultSumElement = document.getElementById('result-sum')
+const resultSumEvenOddElement = document.getElementById('result-sum-evenOdd')
+// Create variable
 const min = 1; // Min nr to generate
 const max = 5; // Max nr to generate
 const message = 'The winner is:'
+        
+/**
+ * 
+ * @returns {number}
+*/
+// Create function to generate pc rendom nr
+function generatePcNumber(){
+    // Generate a nr from min to max
+    const pcNumber = Math.floor(Math.random()*(max - min + 1)) + min
+    return pcNumber // Return pcNumber
+}
+// Create function to select the pc word
+function selectPcWord(userWord){
+    const pcWord = userWord === 'even'? 'odd' : 'even' // Check the user selected to define the pc selected
+    return pcWord
+}
+// Create check even or odd function
+function isEvvenOdd (sum){
+    let result = sum % 2 === 0 ? 'even' : 'odd' // Chek if is even or odd
+    return result // Return the result
+}
 
-//! Validation
-switch (true) {
-    case userWord !== 'even' && userWord !== 'odd': // Check if userWord is not 'even' or 'odd'
-    case isNaN(userNumber): // Check if userNumber is not a number
-    case !userNumber: // Check if userNumber is empty
-    case isNaN(userNumber < 1): // Check if userNumber is less than 1
-    console.log('!ERROR: Your inputs are incorrect')
-    break
+// --- Proccesing phase
+// Add event listener on form element
+evenOddFormElement.addEventListener('submit',function(e){
+    e.preventDefault(); // Prevent the default form submission action
+    const userNumber =  parseInt(userNumberElement.value) // Save the user number
+    resultUserNumberElement.innerText += userNumber // Print the user number in resultUserNumberElement on DOM
+    const userWord = userWordElement.value // Save the user selected word
+    resultUserSelectedElement.innerText += userWord // Print the word in user selected result element on DOM
+    const pcNumber = generatePcNumber() // Save pc number
+    const sum = userNumber + pcNumber // Save the sum of tow numbers
+    resultSumElement.innerText += sum // Print in result sum element on DOM
+    resultPcNumberElement.innerText += pcNumber // Print the Pc rendom number in resultPcNumberElement on DOM
+    resultPcSelectedElement.innerText += selectPcWord(userWord) // Print the Ps selected in Dom element
+    resultSumEvenOddElement.innerText += isEvvenOdd(sum) // Print the Ps selected in Dom element
+    // Compare the reult with userWord to declear the winer
+    const winner = userWord === isEvvenOdd(sum) ? `${message}Player` : `${message}CPU`
+    // Print message in resultMesssageElement on DOM
+    messageElement.innerText = winner
 
-    default:        
-        /**
-         * 
-         * @returns {number}
-        */
-       // Create generate ps number functions
-       function generatePcNumber(){
-           // Generate a nr from min to max
-           const pcNumber = Math.floor(Math.random()*(max - min + 1)) + min
-           console.log(`Pc nr is:${pcNumber}`) // Print in consol pcnumber
-           
-           return pcNumber // Return pcNumber
-        }
-        
-        // Save the sum of tow numbers
-        const sum = userNumber + generatePcNumber();
-        console.log('The sum is:',sum) // Print in console the sum 
-        
-        // Create check even or odd function
-        function isEvvenOdd (sum){
-            let result = sum % 2 === 0 ? 'even' : 'odd' // Chek if is even or odd
-            console.log(result)
-            
-            return result // Return the result
-        }
-        
-        // --- Proccesing phase
-        // Compare the reult with userWord to declear the winer
-        const winner = userWord === isEvvenOdd(sum) ? `${message}User` : `${message}PC`
-        
-        console.log(winner)
-    }   
+    evenOddFormElement.classList.add('d-none') // Hidden the form element
+    evenOddResultFormElement.classList.remove('d-none') // Show the form element
+})
