@@ -9,7 +9,7 @@
     1. Get from user inputs 'even' or 'odd' and a nr from 1 to 5
     2. Create variables to save the inputs from user
     3. Create a function to generate a rendom nr from 1 to 5
-        - Name the function generatePcNumber  expect no parameters
+        - Name the function generatePcNumber  expect tow parameters min and max
         - Create a rendom nr
         - Return this nr
     4. Create a variable to save the sum of tow numbers(userNr and pcNr)
@@ -44,10 +44,12 @@ const message = 'The winner is:'
         
 /**
  * 
+ * @param {1} min // Min number to generate
+ * @param {5} max // Max number to generate
  * @returns {number}
-*/
+ */
 // Create function to generate pc rendom nr
-function generatePcNumber(){
+function generatePcNumber(min, max){
     // Generate a nr from min to max
     const pcNumber = Math.floor(Math.random()*(max - min + 1)) + min
     return pcNumber // Return pcNumber
@@ -71,7 +73,7 @@ evenOddFormElement.addEventListener('submit',function(e){
     resultUserNumberElement.innerText += userNumber // Print the user number in resultUserNumberElement on DOM
     const userWord = userWordElement.value // Save the user selected word
     resultUserSelectedElement.innerText += userWord // Print the word in user selected result element on DOM
-    const pcNumber = generatePcNumber() // Save pc number
+    const pcNumber = generatePcNumber(min, max) // Save pc number
     const sum = userNumber + pcNumber // Save the sum of tow numbers
     resultSumElement.innerText += sum // Print in result sum element on DOM
     resultPcNumberElement.innerText += pcNumber // Print the Pc rendom number in resultPcNumberElement on DOM
